@@ -1,0 +1,7 @@
+{
+  "name": "ejercicio05_pelis",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
