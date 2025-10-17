@@ -1,0 +1,66 @@
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0;
+}
+
+.circulo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+}
+
+.circulo.activo {
+  border-color: var(--ion-color-primary);
+}
+
+.coleccion {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.poster-pequeño {
+  width: 100px;
+  height: 150px;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block;
+}
+
+.poster-grande {
+  width: 200px;
+  height: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.rango {
+  background: var(--ion-color-primary);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.cargando {
+  text-align: center;
+  margin: 20px 0;
+}

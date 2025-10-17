@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Ejercicio 04</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="botones">
+    <div class="circulo {{coleccion === 'SHADOW' ? 'activo' : ''}}" (click)="cargarShadow()">
+      <ion-icon name="moon" size="large"></ion-icon>
+    </div>
+    <div class="circulo {{coleccion === 'LIGHT' ? 'activo' : ''}}" (click)="cargarLight()">
+      <ion-icon name="sunny" size="large"></ion-icon>
+    </div>
+  </div>
+
+  <div class="titulo">
+  <ion-icon name="moon" size="medium"></ion-icon>
+  <h3 class="texto">Shadow or Light</h3>
+  <ion-icon name="sunny" size="medium"></ion-icon>
+  </div>
+
+  <h2 class="coleccion">{{ coleccion }}</h2>
+
+  <swiper-container slides-per-view="3.5" space-between="10" class="slider">
+    @for (peli of peliculas; track peli['#IMDB_ID']) {
+      <swiper-slide (click)="seleccionarPeli(peli)">
+        <div class="pelicula">
+          <img [src]="peli['#IMG_POSTER']" [alt]="peli['#TITLE']" class="poster-pequeño">
+        </div>
+      </swiper-slide>
+    }
+  </swiper-container>
+
+  @if (peliculaSeleccionada) {
+    <div class="detalles">
+      <ion-card class="ion-text-center">
+        <img [src]="peliculaSeleccionada['#IMG_POSTER']" [alt]="peliculaSeleccionada['#TITLE']" class="poster-grande">
+
+        <ion-card-header>
+          <ion-card-title>{{ peliculaSeleccionada['#TITLE'] }}</ion-card-title>
+          <p class="ion-color-medium">{{ peliculaSeleccionada['#ACTORS'] }}</p>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="fila">
+            <span class="ion-color-primary ion-text-bold">{{ peliculaSeleccionada['#YEAR'] }}</span>
+            <span class="rango">{{ peliculaSeleccionada['#RANK'] }}</span>
+          </div>
+          <p class="ion-color-medium">{{ peliculaSeleccionada['#AKA'] }}</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  }
+
+  @if (cargando) {
+    <p class="cargando">Cargando...</p>
+  }
+</ion-content>
