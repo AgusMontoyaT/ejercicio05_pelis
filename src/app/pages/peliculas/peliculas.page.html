@@ -6,54 +6,55 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <div class="botones">
-    <div class="circulo {{coleccion === 'SHADOW' ? 'activo' : ''}}" (click)="cargarShadow()">
+    <div class="circulo" [class.activo]="coleccion === 'SHADOW'" (click)="cargarShadow()">
       <ion-icon name="moon" size="large"></ion-icon>
     </div>
-    <div class="circulo {{coleccion === 'LIGHT' ? 'activo' : ''}}" (click)="cargarLight()">
+    <div class="circulo" [class.activo]="coleccion === 'LIGHT'" (click)="cargarLight()">
       <ion-icon name="sunny" size="large"></ion-icon>
     </div>
   </div>
 
   <div class="titulo">
-  <ion-icon name="moon" size="medium"></ion-icon>
-  <h3 class="texto">Shadow or Light</h3>
-  <ion-icon name="sunny" size="medium"></ion-icon>
+    <ion-icon name="moon"></ion-icon>
+    <h3>Shadow or Light</h3>
+    <ion-icon name="sunny"></ion-icon>
   </div>
 
-  <h2 class="coleccion">{{ coleccion }}</h2>
+  <h2 class="ion-text-center">{{ coleccion }}</h2>
 
-  <swiper-container slides-per-view="3.5" space-between="10" class="slider">
+  <swiper-container slides-per-view="3.5" space-between="10">
     @for (peli of peliculas; track peli['#IMDB_ID']) {
       <swiper-slide (click)="seleccionarPeli(peli)">
-        <div class="pelicula">
-          <img [src]="peli['#IMG_POSTER']" [alt]="peli['#TITLE']" class="poster-pequeño">
-        </div>
+        <img [src]="peli['#IMG_POSTER']" class="poster">
       </swiper-slide>
     }
   </swiper-container>
 
   @if (peliculaSeleccionada) {
-    <div class="detalles">
-      <ion-card class="ion-text-center">
-        <img [src]="peliculaSeleccionada['#IMG_POSTER']" [alt]="peliculaSeleccionada['#TITLE']" class="poster-grande">
+    <ion-card class="ion-text-center">
+      <img [src]="peliculaSeleccionada['#IMG_POSTER']" class="poster-grande">
 
-        <ion-card-header>
-          <ion-card-title>{{ peliculaSeleccionada['#TITLE'] }}</ion-card-title>
-          <p class="ion-color-medium">{{ peliculaSeleccionada['#ACTORS'] }}</p>
-        </ion-card-header>
+      <ion-card-header class="ion-text-start">
+        <ion-card-title>{{ peliculaSeleccionada['#TITLE'] }}</ion-card-title>
+      </ion-card-header>
 
-        <ion-card-content>
-          <div class="fila">
-            <span class="ion-color-primary ion-text-bold">{{ peliculaSeleccionada['#YEAR'] }}</span>
-            <span class="rango">{{ peliculaSeleccionada['#RANK'] }}</span>
-          </div>
+      <ion-card-content class="ion-text-start">
+        <div class="ion-margin-bottom: 15px">
+          <span class="ion-color-primary">{{ peliculaSeleccionada['#YEAR'] }}</span>
+        </div>
+
+        <div class="ion-margin-bottom: 15px">
           <p class="ion-color-medium">{{ peliculaSeleccionada['#AKA'] }}</p>
-        </ion-card-content>
-      </ion-card>
-    </div>
+        </div>
+
+        <div class="ion-margin-bottom: 15px">
+          <span class="numero">{{ peliculaSeleccionada['#RANK'] }}</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
   }
 
   @if (cargando) {
-    <p class="cargando">Cargando...</p>
+    <p class="ion-text-center">Cargando...</p>
   }
 </ion-content>

@@ -16,7 +16,8 @@ import { HttpClient } from '@angular/common/http';
   imports: [
     IonContent, IonHeader, IonTitle, IonToolbar,
     IonCard, IonCardHeader, IonCardTitle, IonCardContent,
-    CommonModule, FormsModule, IonIcon
+    IonIcon,
+    CommonModule, FormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
@@ -26,7 +27,7 @@ export class PeliculasPage {
 
   peliculas: any[] = [];
   peliculaSeleccionada: any = null;
-  coleccion: string = 'SHADOW';
+  coleccion = 'SHADOW';
   cargando = false;
 
   cargarShadow() {
@@ -34,7 +35,7 @@ export class PeliculasPage {
     this.coleccion = 'SHADOW';
     this.http.get('https://imdb.iamidiotareyoutoo.com/search?q=shadow').subscribe(
       (data: any) => {
-        this.peliculas = data.description || [];
+        this.peliculas = data.description;
         this.mostrarMensaje('Colección Shadow cargada');
         this.cargando = false;
       }
@@ -46,7 +47,7 @@ export class PeliculasPage {
     this.coleccion = 'LIGHT';
     this.http.get('https://imdb.iamidiotareyoutoo.com/search?q=light').subscribe(
       (data: any) => {
-        this.peliculas = data.description || [];
+        this.peliculas = data.description;
         this.mostrarMensaje('Colección Light cargada');
         this.cargando = false;
       }
