@@ -1,10 +1,10 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title class="ion-text-center">Ejercicio 04</ion-title>
+    <ion-title class="ion-text-center">Ejercicio 05</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content class="ion-padding">
   <div class="botones">
     <div class="circulo" [class.activo]="coleccion === 'SHADOW'" (click)="cargarShadow()">
       <ion-icon name="moon" size="large"></ion-icon>
@@ -32,22 +32,22 @@
 
   @if (peliculaSeleccionada) {
     <ion-card class="ion-text-center">
-      <img [src]="peliculaSeleccionada['#IMG_POSTER']" class="poster-grande">
+      <img [src]="peliculaSeleccionada['#IMG_POSTER']" class="poster-grande" alt="Poster de la película elegida">
 
       <ion-card-header class="ion-text-start">
         <ion-card-title>{{ peliculaSeleccionada['#TITLE'] }}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content class="ion-text-start">
-        <div class="ion-margin-bottom: 15px">
-          <span class="ion-color-primary">{{ peliculaSeleccionada['#YEAR'] }}</span>
+        <div class="fila">
+          <span class="año">{{ peliculaSeleccionada['#YEAR'] }}</span>
         </div>
 
-        <div class="ion-margin-bottom: 15px">
-          <p class="ion-color-medium">{{ peliculaSeleccionada['#AKA'] }}</p>
+        <div class="fila">
+          <p class="aka">{{ peliculaSeleccionada['#AKA'] }}</p>
         </div>
 
-        <div class="ion-margin-bottom: 15px">
+        <div class="fila">
           <span class="numero">{{ peliculaSeleccionada['#RANK'] }}</span>
         </div>
       </ion-card-content>
